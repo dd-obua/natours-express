@@ -1,5 +1,4 @@
 const fs = require('fs');
-
 const express = require('express');
 
 const app = express();
@@ -57,13 +56,13 @@ const deleteTour = (req, res) => {
   res.status(204).json({ status: 'success', data: null });
 };
 
-// Tours resource
-app.get('/api/v1/tours', getAllTours);
-app.post('/api/v1/tours', createTour);
+app.route('/api/v1/tours').get(getAllTours).post(createTour);
 
-app.get('/api/v1/tours/:id', getTour);
-app.patch('/api/v1/tours/:id', updateTour);
-app.delete('/api/v1/tours/:id', deleteTour);
+app
+  .route('/api/v1/tours/:id')
+  .get(getTour)
+  .patch(updateTour)
+  .delete(deleteTour);
 
 // Start server
 const port = 3000;
