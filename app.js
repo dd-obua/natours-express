@@ -20,7 +20,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// Moutning routers
+// Mounting routers
 app.use('/api/v1/tours', tourRouter); // middleware and sub application
 app.use('/api/v1/users', userRouter);
 
