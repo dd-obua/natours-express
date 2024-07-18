@@ -1,10 +1,13 @@
 const fs = require('fs');
 const express = require('express');
+const morgan = require('morgan');
 
 const app = express();
+
+app.use(morgan('dev'));
 app.use(express.json());
 
-// Global middleware
+// Middleware
 app.use((req, res, next) => {
   console.log('Hello from the middleware');
   next();
@@ -19,6 +22,7 @@ const tours = JSON.parse(
   fs.readFileSync(`${__dirname}/dev-data/data/tours-simple.json`)
 );
 
+// Route handlers
 const getAllTours = (req, res) => {
   console.log(req.requestTime);
 
