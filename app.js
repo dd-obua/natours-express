@@ -8,6 +8,7 @@ const userRouter = require('./routes/userRoutes');
 
 app.use(morgan('dev'));
 app.use(express.json());
+app.use(express.static(`${__dirname}/public`));
 
 // Middleware
 app.use((req, res, next) => {
