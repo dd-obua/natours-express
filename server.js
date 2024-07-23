@@ -12,17 +12,7 @@ const DB = process.env.DATABASE.replace(
 mongoose
   .connect(DB)
   .then(() => console.log(`Database connection successful!`))
-  .catch((error) => console.error(`Error: ${error}`));
-
-// Tour schema
-const tourSchema = new mongoose.Schema({
-  name: { type: String, required: true, unique: true },
-  rating: { type: Number, default: 4.5 },
-  price: { type: Number, required: [true, 'A tour must have a name'] },
-});
-
-// Tour model
-const Tour = mongoose.model('Tour', tourSchema);
+  .catch((error) => console.error(error));
 
 const testTour = new Tour({
   name: 'The Forest Hiker',
@@ -32,7 +22,7 @@ const testTour = new Tour({
 testTour
   .save()
   .then((doc) => console.log(doc))
-  .catch((error) => console.error('rror:', error));
+  .catch((error) => console.error(error));
 
 // Start server
 const port = process.env.PORT || 3000;
