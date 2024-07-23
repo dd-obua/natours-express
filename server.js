@@ -9,9 +9,14 @@ const DB = process.env.DATABASE.replace(
   process.env.DATABASE_PASSWORD,
 );
 
+// mongoose
+//   .connect(DB)
+//   .then(() => console.log(`Database connection successful!`))
+//   .catch((error) => console.error(`Error: ${error}`));
+
 mongoose
-  .connect(DB)
-  .then(() => console.log(`Database connection successful`))
+  .connect(process.env.DATABASE_LOCAL)
+  .then(() => console.log(`Database connection successful!`))
   .catch((error) => console.error(`Error: ${error}`));
 
 // Start server
