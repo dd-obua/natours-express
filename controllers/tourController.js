@@ -1,7 +1,8 @@
 const fs = require('fs');
+const Tour = require('../model/tourModel');
 
 const tours = JSON.parse(
-  fs.readFileSync(`${__dirname}/../dev-data/data/tours-simple.json`)
+  fs.readFileSync(`${__dirname}/../dev-data/data/tours-simple.json`),
 );
 
 exports.checkID = (req, res, next, val) => {
@@ -11,7 +12,7 @@ exports.checkID = (req, res, next, val) => {
     return res.status(404).json({ status: 'fail', message: 'Invalid id' });
   }
   next();
-};  
+};
 
 exports.checkBody = (req, res, next) => {
   if (!req.body.name || !req.body.price) {
@@ -51,7 +52,7 @@ exports.createTour = (req, res) => {
     JSON.stringify(tours),
     (error) => {
       res.status(201).json({ status: 'success', data: { tour: newTour } });
-    }
+    },
   );
 };
 
