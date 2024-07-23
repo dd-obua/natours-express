@@ -14,16 +14,6 @@ mongoose
   .then(() => console.log(`Database connection successful!`))
   .catch((error) => console.error(error));
 
-const testTour = new Tour({
-  name: 'The Forest Hiker',
-  rating: 4.7,
-  price: 497,
-});
-testTour
-  .save()
-  .then((doc) => console.log(doc))
-  .catch((error) => console.error(error));
-
 // Start server
 const port = process.env.PORT || 3000;
 app.listen(port, '127.0.0.1', () => {
