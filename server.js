@@ -14,6 +14,13 @@ mongoose
   .then(() => console.log(`Database connection successful!`))
   .catch((error) => console.error(`Error: ${error}`));
 
+// Tour schema
+const tourSchema = new mongoose.Schema({
+  name: { type: String, required: true, unique: true },
+  rating: { type: Number, default: 4.5 },
+  price: { type: Number, required: [true, 'A tour must have a name'] },
+});
+
 // Start server
 const port = process.env.PORT || 3000;
 app.listen(port, '127.0.0.1', () => {
