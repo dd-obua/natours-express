@@ -1,4 +1,3 @@
-const { json } = require('express');
 const Tour = require('../model/tourModel');
 
 // Route handlers
