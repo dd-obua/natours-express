@@ -33,6 +33,8 @@ exports.getAllTours = async (req, res) => {
     if (fields) {
       fields = fields.split(',').join(' ');
       query = query.select(fields);
+    } else {
+      query = query.select('-__v');
     }
 
     // 2. Execute query
